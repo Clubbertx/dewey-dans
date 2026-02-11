@@ -1,0 +1,277 @@
+---
+import type { Product } from "../data/products";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const heatColors: Record<string, string> = {
+  Mild: "#4caf50",
+  Medium: "#ff9800",
+  Hot: "#f44336",
+  "Extra Hot": "#b71c1c",
+};
+
+const heatDots: Record<string, number> = {
+  Mild: 1,
+  Medium: 2,
+  Hot: 3,
+  "Extra Hot": 4,
+};
+
+const liquidColors: Record<string, [string, string]> = {
+  Mild: ["#e8a44a", "#c4762a"],
+  Medium: ["#d4722a", "#a84e18"],
+  Hot: ["#c44a22", "#8b2e10"],
+  "Extra Hot": ["#a82218", "#6a0a04"],
+};
+
+const bottleId = `bottle-${product.id}`;
+---
+
+<div class="card">
+  <div class="card-image">
+    <svg class="bottle-svg" viewBox="0 0 140 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Glass body gradient - warm amber/red -->
+        <linearGradient id={`glass-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#5a1a0a" />
+          <stop offset="15%" stop-color="#7a2a12" />
+          <stop offset="35%" stop-color="#8e3318" />
+          <stop offset="50%" stop-color="#7a2a12" />
+          <stop offset="70%" stop-color="#5a1a0a" />
+          <stop offset="100%" stop-color="#3e0e04" />
+        </linearGradient>
+        <!-- Glass neck gradient -->
+        <linearGradient id={`neck-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#5a1a0a" />
+          <stop offset="30%" stop-color="#7a2a12" />
+          <stop offset="60%" stop-color="#8e3318" />
+          <stop offset="100%" stop-color="#4a1208" />
+        </linearGradient>
+        <!-- Specular highlight -->
+        <linearGradient id={`highlight-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="white" stop-opacity="0" />
+          <stop offset="40%" stop-color="white" stop-opacity="0.15" />
+          <stop offset="50%" stop-color="white" stop-opacity="0.22" />
+          <stop offset="60%" stop-color="white" stop-opacity="0.1" />
+          <stop offset="100%" stop-color="white" stop-opacity="0" />
+        </linearGradient>
+        <!-- Liquid gradient -->
+        <linearGradient id={`liquid-${bottleId}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color={liquidColors[product.heat][0]} stop-opacity="0.7" />
+          <stop offset="100%" stop-color={liquidColors[product.heat][1]} stop-opacity="0.9" />
+        </linearGradient>
+        <!-- Cap gradient - black/dark -->
+        <linearGradient id={`cap-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a1a1a" />
+          <stop offset="30%" stop-color="#333" />
+          <stop offset="70%" stop-color="#2a2a2a" />
+          <stop offset="100%" stop-color="#111" />
+        </linearGradient>
+        <!-- Shadow under bottle -->
+        <radialGradient id={`shadow-${bottleId}`} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#000" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="#000" stop-opacity="0" />
+        </radialGradient>
+        <!-- Label clip path -->
+        <clipPath id={`label-clip-${bottleId}`}>
+          <rect x="34" y="100" width="72" height="90" rx="3" />
+        </clipPath>
+      </defs>
+
+      <!-- Drop shadow ellipse -->
+      <ellipse cx="70" cy="250" rx="40" ry="7" fill={`url(#shadow-${bottleId})`} />
+
+      <!-- === CAP === -->
+      <rect x="54" y="4" width="32" height="28" rx="3" fill={`url(#cap-${bottleId})`} />
+      <!-- Cap ridges -->
+      <line x1="56" y1="8" x2="56" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
+      <line x1="60" y1="8" x2="60" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
+      <line x1="64" y1="8" x2="64" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
+      <line x1="68" y1="8" x2="68" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
+      <line x1="72" y1="8" x2="72" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
+      <line x1="76" y1="8" x2="76" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
+      <line x1="80" y1="8" x2="80" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
+      <line x1="84" y1="8" x2="84" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
+      <!-- Cap top bevel -->
+      <rect x="54" y="4" width="32" height="4" rx="3" fill="white" opacity="0.08" />
+      <!-- Cap ring at bottom -->
+      <rect x="52" y="28" width="36" height="5" rx="2" fill="#222" />
+      <rect x="52" y="28" width="36" height="2" rx="1" fill="white" opacity="0.06" />
+
+      <!-- === BOTTLE NECK === -->
+      <rect x="56" y="32" width="28" height="40" rx="2" fill={`url(#neck-${bottleId})`} />
+      <!-- Neck ring -->
+      <rect x="52" y="68" width="36" height="5" rx="2" fill="#4a1208" />
+      <rect x="52" y="68" width="36" height="2" rx="1" fill="white" opacity="0.06" />
+      <!-- Neck highlight -->
+      <rect x="67" y="34" width="5" height="34" rx="2.5" fill="white" opacity="0.1" />
+
+      <!-- === BOTTLE BODY (wide, rounded shoulders like reference) === -->
+      <path d="M30,82 Q30,72 52,72 L88,72 Q110,72 110,82 L110,218 Q110,244 70,244 Q30,244 30,218 Z" fill={`url(#glass-${bottleId})`} />
+
+      <!-- Body specular highlight (left) -->
+      <path d="M38,84 Q38,76 52,76 L56,76 Q42,78 40,86 L40,214 Q40,230 54,238 Q42,234 38,224 Z" fill="white" opacity="0.07" />
+      <!-- Body specular highlight (center-right) -->
+      <path d="M80,80 Q84,78 86,80 L86,218 Q86,228 80,234 L80,80 Z" fill={`url(#highlight-${bottleId})`} opacity="0.5" />
+
+      <!-- === LIQUID === -->
+      <path d={`M32,108 L108,108 L108,218 Q108,242 70,242 Q32,242 32,218 Z`} fill={`url(#liquid-${bottleId})`} />
+      <!-- Liquid meniscus -->
+      <ellipse cx="70" cy="108" rx="38" ry="3" fill={liquidColors[product.heat][0]} opacity="0.3" />
+
+      <!-- === LABEL IMAGE === -->
+      <image
+        href="/label.png"
+        x="34"
+        y="100"
+        width="72"
+        height="90"
+        clip-path={`url(#label-clip-${bottleId})`}
+        preserveAspectRatio="xMidYMid slice"
+      />
+      <!-- Label border -->
+      <rect x="34" y="100" width="72" height="90" rx="3" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="0.5" />
+
+      <!-- Product name on label -->
+      <text x="70" y="180" text-anchor="middle" font-size="6.5" font-weight="800" fill="#fff" font-family="'Arial Black', 'Impact', sans-serif" stroke="#000" stroke-width="0.8" paint-order="stroke">
+        {product.name.toUpperCase().split(" ").map((w, i) => (
+          <tspan x="70" dy={i === 0 ? "0" : "8"}>{w}</tspan>
+        ))}
+      </text>
+
+      <!-- === GLASS REFLECTIONS === -->
+      <!-- Rim highlight -->
+      <ellipse cx="70" cy="72" rx="40" ry="2" fill="white" opacity="0.05" />
+      <!-- Bottom reflection -->
+      <ellipse cx="70" cy="240" rx="32" ry="2" fill="white" opacity="0.03" />
+    </svg>
+  </div>
+  <div class="card-body">
+    <h3 class="card-name">{product.name}</h3>
+    <div class="heat-row">
+      <div class="heat-dots">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <span
+            class:list={["dot", { active: i < heatDots[product.heat] }]}
+            style={i < heatDots[product.heat] ? `background: ${heatColors[product.heat]}` : ""}
+          />
+        ))}
+      </div>
+      <span class="heat-label" style={`color: ${heatColors[product.heat]}`}>
+        {product.heat}
+      </span>
+    </div>
+    <p class="card-desc">{product.description}</p>
+    <div class="card-footer">
+      <span class="price">${product.price.toFixed(2)}</span>
+      <button class="add-btn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    background: var(--color-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .card-image {
+    padding: 1.5rem 2rem 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bottle-svg {
+    width: 110px;
+    height: 204px;
+  }
+
+  .card-body {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .card-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .heat-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .heat-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+
+  .dot.active {
+    /* color set inline */
+  }
+
+  .heat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .add-btn {
+    padding: 0.55rem 1.2rem;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .add-btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .add-btn:active {
+    transform: translateY(0);
+  }
+</style>

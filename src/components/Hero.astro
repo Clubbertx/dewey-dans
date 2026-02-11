@@ -1,0 +1,175 @@
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">Small Batch. Big Heat.</p>
+    <h1 class="hero-headline">
+      Hot Sauce Worth<br />
+      <span class="accent">Fighting Over.</span>
+    </h1>
+    <p class="hero-sub">
+      Handcrafted in small batches with real ingredients. From mild everyday
+      drizzles to face-melting infernos — we've got your heat.
+    </p>
+    <div class="hero-actions">
+      <div class="bossman">
+        <img src="/dewey-dan.png" alt="Dewey Dan" class="bossman-img" />
+        <span class="bossman-title">The Bossman<br/>Sauceman</span>
+      </div>
+      <svg class="signature" viewBox="-10 0 280 80" xmlns="http://www.w3.org/2000/svg" aria-label="Dewey Dan signature">
+        <g fill="none" stroke="#1a1a1a" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Opening quote marks -->
+          <text x="-4" y="28" font-size="18" font-family="Georgia, serif" fill="#1a1a1a" opacity="0.6" style="font-style:italic">&ldquo;</text>
+          <!-- D -->
+          <path d="M12,58 Q11,32 14,18 Q15,14 16,18 Q17,28 16,52 Q16,58 18,56 Q32,42 34,30 Q35,24 30,28 Q24,34 26,42" stroke-width="1.3" />
+          <!-- e -->
+          <path d="M38,36 Q46,32 46,38 Q46,44 38,48 Q34,50 36,46" stroke-width="1.1" />
+          <!-- w -->
+          <path d="M50,34 Q48,44 50,48 Q54,38 56,34 Q54,44 58,48 Q62,38 62,34" stroke-width="1" />
+          <!-- e -->
+          <path d="M66,36 Q74,32 74,38 Q74,44 66,48 Q62,50 64,46" stroke-width="1.1" />
+          <!-- y -->
+          <path d="M78,34 Q80,44 82,48 M86,34 Q84,44 80,58 Q78,64 74,62" stroke-width="1" />
+          <!-- flourish -->
+          <path d="M92,46 Q100,40 108,44" stroke-width="0.7" opacity="0.4" />
+          <!-- D -->
+          <path d="M112,58 Q111,32 114,18 Q115,14 116,18 Q117,28 116,52 Q116,58 118,56 Q132,42 134,30 Q135,24 130,28 Q124,34 126,42" stroke-width="1.4" />
+          <!-- a -->
+          <path d="M140,36 Q146,30 148,36 Q148,42 140,46 Q138,48 142,48 Q148,46 148,42" stroke-width="1.1" />
+          <!-- n -->
+          <path d="M152,34 Q152,42 152,48 Q154,36 160,34 Q164,34 162,42 Q160,48 162,48" stroke-width="1.1" />
+          <!-- underline flourish -->
+          <path d="M10,64 Q60,62 120,66 Q180,70 170,60 Q166,56 174,58 Q200,66 186,62" stroke-width="0.8" opacity="0.3" />
+          <!-- Closing quote marks -->
+          <text x="168" y="28" font-size="18" font-family="Georgia, serif" fill="#1a1a1a" opacity="0.6" style="font-style:italic">&rdquo;</text>
+        </g>
+      </svg>
+      <a href="#products" class="hero-cta">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 6rem 2rem 5rem;
+    text-align: center;
+    background: var(--color-secondary);
+  }
+
+  .hero-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .accent {
+    color: var(--color-accent);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-right: 3rem;
+  }
+
+  .bossman {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .bossman-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    object-fit: cover;
+    object-position: center 15%;
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .bossman-title {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .signature {
+    width: 240px;
+    height: 74px;
+    opacity: 0.75;
+    transform: rotate(-2deg);
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .hero-cta:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 4rem 1.5rem 3.5rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      padding-right: 0;
+    }
+
+    .bossman-img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .signature {
+      width: 200px;
+      height: 62px;
+      transform: rotate(0deg);
+    }
+  }
+</style>

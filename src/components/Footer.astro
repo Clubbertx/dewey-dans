@@ -1,0 +1,149 @@
+<footer class="footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">🔥 Dewey Dan's</p>
+        <p class="footer-tagline">
+          Small-batch hot sauce, handcrafted with love and an unreasonable
+          amount of peppers.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#">Home</a>
+        <a href="#products">Shop</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay in the Heat</h4>
+        <p>Get updates on new sauces and exclusive drops.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Dewey Dan's Hot Sauce. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-text);
+    color: #ccc;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links h4,
+  .footer-newsletter h4 {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-newsletter p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid #444;
+    border-radius: var(--radius);
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: inherit;
+  }
+
+  .newsletter-form input::placeholder {
+    color: #888;
+  }
+
+  .newsletter-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .newsletter-form button {
+    padding: 0.6rem 1.2rem;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 700px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer {
+      padding: 3rem 1.5rem 1.5rem;
+    }
+  }
+</style>
