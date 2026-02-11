@@ -21,11 +21,11 @@ const heatDots: Record<string, number> = {
   "Extra Hot": 4,
 };
 
-const liquidColors: Record<string, [string, string]> = {
-  Mild: ["#e8a44a", "#c4762a"],
-  Medium: ["#d4722a", "#a84e18"],
-  Hot: ["#c44a22", "#8b2e10"],
-  "Extra Hot": ["#a82218", "#6a0a04"],
+const sauceColors: Record<string, [string, string]> = {
+  Mild: ["#e8944a", "#c46a2a"],
+  Medium: ["#d4622a", "#a84418"],
+  Hot: ["#c43a22", "#8b2210"],
+  "Extra Hot": ["#a81a10", "#6a0804"],
 };
 
 const bottleId = `bottle-${product.id}`;
@@ -33,121 +33,126 @@ const bottleId = `bottle-${product.id}`;
 
 <div class="card">
   <div class="card-image">
-    <svg class="bottle-svg" viewBox="0 0 140 260" xmlns="http://www.w3.org/2000/svg">
+    <svg class="bottle-svg" viewBox="0 0 140 280" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <!-- Glass body gradient - warm amber/red -->
+        <!-- Glass body gradient - dark reddish-brown like the real bottle -->
         <linearGradient id={`glass-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#5a1a0a" />
-          <stop offset="15%" stop-color="#7a2a12" />
-          <stop offset="35%" stop-color="#8e3318" />
-          <stop offset="50%" stop-color="#7a2a12" />
+          <stop offset="0%" stop-color="#3a0e06" />
+          <stop offset="12%" stop-color="#5a1a0a" />
+          <stop offset="30%" stop-color="#6e2210" />
+          <stop offset="50%" stop-color="#7a2814" />
           <stop offset="70%" stop-color="#5a1a0a" />
-          <stop offset="100%" stop-color="#3e0e04" />
+          <stop offset="88%" stop-color="#3a0e06" />
+          <stop offset="100%" stop-color="#2a0804" />
         </linearGradient>
         <!-- Glass neck gradient -->
         <linearGradient id={`neck-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#5a1a0a" />
-          <stop offset="30%" stop-color="#7a2a12" />
-          <stop offset="60%" stop-color="#8e3318" />
-          <stop offset="100%" stop-color="#4a1208" />
+          <stop offset="0%" stop-color="#3a0e06" />
+          <stop offset="30%" stop-color="#5a1a0a" />
+          <stop offset="60%" stop-color="#6e2210" />
+          <stop offset="100%" stop-color="#2a0804" />
         </linearGradient>
         <!-- Specular highlight -->
         <linearGradient id={`highlight-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="white" stop-opacity="0" />
-          <stop offset="40%" stop-color="white" stop-opacity="0.15" />
-          <stop offset="50%" stop-color="white" stop-opacity="0.22" />
-          <stop offset="60%" stop-color="white" stop-opacity="0.1" />
+          <stop offset="35%" stop-color="white" stop-opacity="0.12" />
+          <stop offset="50%" stop-color="white" stop-opacity="0.2" />
+          <stop offset="65%" stop-color="white" stop-opacity="0.08" />
           <stop offset="100%" stop-color="white" stop-opacity="0" />
         </linearGradient>
-        <!-- Liquid gradient -->
-        <linearGradient id={`liquid-${bottleId}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color={liquidColors[product.heat][0]} stop-opacity="0.7" />
-          <stop offset="100%" stop-color={liquidColors[product.heat][1]} stop-opacity="0.9" />
+        <!-- Sauce gradient -->
+        <linearGradient id={`sauce-${bottleId}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color={sauceColors[product.heat][0]} stop-opacity="0.65" />
+          <stop offset="100%" stop-color={sauceColors[product.heat][1]} stop-opacity="0.85" />
         </linearGradient>
-        <!-- Cap gradient - black/dark -->
+        <!-- Cap gradient -->
         <linearGradient id={`cap-${bottleId}`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#1a1a1a" />
-          <stop offset="30%" stop-color="#333" />
-          <stop offset="70%" stop-color="#2a2a2a" />
-          <stop offset="100%" stop-color="#111" />
+          <stop offset="0%" stop-color="#111" />
+          <stop offset="30%" stop-color="#2a2a2a" />
+          <stop offset="70%" stop-color="#222" />
+          <stop offset="100%" stop-color="#0a0a0a" />
         </linearGradient>
-        <!-- Shadow under bottle -->
+        <!-- Shadow -->
         <radialGradient id={`shadow-${bottleId}`} cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#000" stop-opacity="0.25" />
+          <stop offset="0%" stop-color="#000" stop-opacity="0.3" />
           <stop offset="100%" stop-color="#000" stop-opacity="0" />
         </radialGradient>
-        <!-- Label clip path -->
+        <!-- Label area - fire gradient background -->
+        <linearGradient id={`fire-bg-${bottleId}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ff6600" />
+          <stop offset="30%" stop-color="#ff3300" />
+          <stop offset="60%" stop-color="#cc2200" />
+          <stop offset="100%" stop-color="#991100" />
+        </linearGradient>
+        <!-- Label clip -->
         <clipPath id={`label-clip-${bottleId}`}>
-          <rect x="34" y="100" width="72" height="90" rx="3" />
+          <rect x="32" y="95" width="76" height="100" rx="3" />
         </clipPath>
       </defs>
 
-      <!-- Drop shadow ellipse -->
-      <ellipse cx="70" cy="250" rx="40" ry="7" fill={`url(#shadow-${bottleId})`} />
+      <!-- Drop shadow -->
+      <ellipse cx="70" cy="268" rx="42" ry="8" fill={`url(#shadow-${bottleId})`} />
 
       <!-- === CAP === -->
-      <rect x="54" y="4" width="32" height="28" rx="3" fill={`url(#cap-${bottleId})`} />
+      <rect x="54" y="4" width="32" height="30" rx="4" fill={`url(#cap-${bottleId})`} />
       <!-- Cap ridges -->
-      <line x1="56" y1="8" x2="56" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
-      <line x1="60" y1="8" x2="60" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
-      <line x1="64" y1="8" x2="64" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
-      <line x1="68" y1="8" x2="68" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
-      <line x1="72" y1="8" x2="72" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
-      <line x1="76" y1="8" x2="76" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
-      <line x1="80" y1="8" x2="80" y2="30" stroke="#444" stroke-width="0.5" opacity="0.4" />
-      <line x1="84" y1="8" x2="84" y2="30" stroke="#444" stroke-width="0.5" opacity="0.3" />
-      <!-- Cap top bevel -->
-      <rect x="54" y="4" width="32" height="4" rx="3" fill="white" opacity="0.08" />
-      <!-- Cap ring at bottom -->
-      <rect x="52" y="28" width="36" height="5" rx="2" fill="#222" />
-      <rect x="52" y="28" width="36" height="2" rx="1" fill="white" opacity="0.06" />
+      {Array.from({ length: 8 }).map((_, i) => (
+        <line x1={57 + i * 3.5} y1="8" x2={57 + i * 3.5} y2="32" stroke="#444" stroke-width="0.5" opacity="0.35" />
+      ))}
+      <!-- Cap top highlight -->
+      <rect x="54" y="4" width="32" height="4" rx="4" fill="white" opacity="0.06" />
+      <!-- Cap ring -->
+      <rect x="52" y="30" width="36" height="5" rx="2.5" fill="#1a1a1a" />
+      <rect x="52" y="30" width="36" height="2" rx="1" fill="white" opacity="0.05" />
 
-      <!-- === BOTTLE NECK === -->
-      <rect x="56" y="32" width="28" height="40" rx="2" fill={`url(#neck-${bottleId})`} />
+      <!-- === NECK === -->
+      <rect x="56" y="34" width="28" height="42" rx="3" fill={`url(#neck-${bottleId})`} />
       <!-- Neck ring -->
-      <rect x="52" y="68" width="36" height="5" rx="2" fill="#4a1208" />
-      <rect x="52" y="68" width="36" height="2" rx="1" fill="white" opacity="0.06" />
+      <rect x="50" y="72" width="40" height="6" rx="3" fill="#3a0e06" />
+      <rect x="50" y="72" width="40" height="2" rx="1" fill="white" opacity="0.05" />
       <!-- Neck highlight -->
-      <rect x="67" y="34" width="5" height="34" rx="2.5" fill="white" opacity="0.1" />
+      <rect x="68" y="36" width="4" height="34" rx="2" fill="white" opacity="0.08" />
 
-      <!-- === BOTTLE BODY (wide, rounded shoulders like reference) === -->
-      <path d="M30,82 Q30,72 52,72 L88,72 Q110,72 110,82 L110,218 Q110,244 70,244 Q30,244 30,218 Z" fill={`url(#glass-${bottleId})`} />
+      <!-- === BODY === -->
+      <path d="M28,86 Q28,76 50,76 L90,76 Q112,76 112,86 L112,232 Q112,260 70,260 Q28,260 28,232 Z" fill={`url(#glass-${bottleId})`} />
 
-      <!-- Body specular highlight (left) -->
-      <path d="M38,84 Q38,76 52,76 L56,76 Q42,78 40,86 L40,214 Q40,230 54,238 Q42,234 38,224 Z" fill="white" opacity="0.07" />
-      <!-- Body specular highlight (center-right) -->
-      <path d="M80,80 Q84,78 86,80 L86,218 Q86,228 80,234 L80,80 Z" fill={`url(#highlight-${bottleId})`} opacity="0.5" />
+      <!-- Body left highlight -->
+      <path d="M36,88 Q36,80 50,80 L54,80 Q40,82 38,90 L38,228 Q38,244 52,252 Q40,248 36,238 Z" fill="white" opacity="0.06" />
+      <!-- Body right highlight -->
+      <path d="M82,84 Q86,82 88,84 L88,232 Q88,242 82,248 L82,84 Z" fill={`url(#highlight-${bottleId})`} opacity="0.45" />
 
-      <!-- === LIQUID === -->
-      <path d={`M32,108 L108,108 L108,218 Q108,242 70,242 Q32,242 32,218 Z`} fill={`url(#liquid-${bottleId})`} />
-      <!-- Liquid meniscus -->
-      <ellipse cx="70" cy="108" rx="38" ry="3" fill={liquidColors[product.heat][0]} opacity="0.3" />
+      <!-- === SAUCE FILL === -->
+      <path d={`M30,115 L110,115 L110,232 Q110,258 70,258 Q30,258 30,232 Z`} fill={`url(#sauce-${bottleId})`} />
+      <!-- Sauce meniscus -->
+      <ellipse cx="70" cy="115" rx="40" ry="3" fill={sauceColors[product.heat][0]} opacity="0.25" />
 
-      <!-- === LABEL IMAGE === -->
+      <!-- === LABEL with fire background === -->
+      <rect x="32" y="95" width="76" height="100" rx="3" fill={`url(#fire-bg-${bottleId})`} />
+
+      <!-- Logo image on label -->
       <image
-        href="/label.png"
-        x="34"
-        y="100"
-        width="72"
-        height="90"
+        href="/logo.png"
+        x="32"
+        y="95"
+        width="76"
+        height="100"
         clip-path={`url(#label-clip-${bottleId})`}
         preserveAspectRatio="xMidYMid slice"
       />
-      <!-- Label border -->
-      <rect x="34" y="100" width="72" height="90" rx="3" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="0.5" />
 
-      <!-- Product name on label -->
-      <text x="70" y="180" text-anchor="middle" font-size="6.5" font-weight="800" fill="#fff" font-family="'Arial Black', 'Impact', sans-serif" stroke="#000" stroke-width="0.8" paint-order="stroke">
+      <!-- Label border -->
+      <rect x="32" y="95" width="76" height="100" rx="3" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="0.5" />
+
+      <!-- Product name below label -->
+      <text x="70" y="210" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="'Arial Black', 'Impact', sans-serif" stroke="#000" stroke-width="0.6" paint-order="stroke">
         {product.name.toUpperCase().split(" ").map((w, i) => (
-          <tspan x="70" dy={i === 0 ? "0" : "8"}>{w}</tspan>
+          <tspan x="70" dy={i === 0 ? "0" : "9"}>{w}</tspan>
         ))}
       </text>
 
       <!-- === GLASS REFLECTIONS === -->
-      <!-- Rim highlight -->
-      <ellipse cx="70" cy="72" rx="40" ry="2" fill="white" opacity="0.05" />
-      <!-- Bottom reflection -->
-      <ellipse cx="70" cy="240" rx="32" ry="2" fill="white" opacity="0.03" />
+      <ellipse cx="70" cy="76" rx="42" ry="2" fill="white" opacity="0.04" />
+      <ellipse cx="70" cy="256" rx="34" ry="2" fill="white" opacity="0.03" />
     </svg>
   </div>
   <div class="card-body">
@@ -194,7 +199,7 @@ const bottleId = `bottle-${product.id}`;
 
   .bottle-svg {
     width: 110px;
-    height: 204px;
+    height: 220px;
   }
 
   .card-body {
